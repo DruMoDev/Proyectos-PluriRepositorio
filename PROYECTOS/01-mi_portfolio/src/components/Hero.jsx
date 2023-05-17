@@ -12,7 +12,7 @@ const Hero = () => {
       </div>
 
       <div className='rounded-full overflow-hidden border-4 border-primary h-[250px] w-[250px] flex justify-center items-center lg:h-[400px] lg:w-[400px]'>
-        <img src='/src/assets/yo.png'/>
+        <img src='/public/yo.png'/>
       </div>
     </div>
   );
