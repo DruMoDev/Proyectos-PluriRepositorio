@@ -10,7 +10,7 @@ const API_URL = "https://api.unsplash.com/search/photos?query=";
 
 function App() {
   const resultsData = JSON.parse(sessionStorage.getItem("resultados"));
-  const [images, setImages] = useState(resultsData ? resultsData : []);
+  const [images, setImages] = useState(resultsData ? resultsData : "");
 
   const handleSubmit = async term => {
     const results = await searchImages(term);
