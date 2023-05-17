@@ -2,13 +2,19 @@ import React from "react";
 
 const Hero = () => {
   return (
-    <header className=' w-full flex justify-between flex-1 items-center my-20 max-w-[1200px] mx-auto '>
-      <div className='ml-20'>
-        <h1 className='text-primary-primary text-2xl hover:text-primary-secondary'><span className="text-primary-dru_white">My name is </span>Dru<span className="text-primary-dru_white">, and I'm a </span>front-end developer</h1>
+    <div id="hero" className=' w-10/12 flex flex-col items-center justify-center gap-10 lg:gap-20 mx-auto'>
+      <div>
+        <h1 className='leading-10 md:text-3xl lg:text-[33px] text-primary text-2xl hover:text-secondary text-center'>
+          <span className='text-dru_white'>My name is </span>Dru
+          <span className='text-dru_white '>, and I'm a </span>
+          front-end developer
+        </h1>
       </div>
 
-      <div className='w-96 h-96 bg-hero bg-no-repeat rounded-full bg-center border-4 border-primary-primary justify-center flex'></div>
-    </header>
+      <div className='rounded-full overflow-hidden border-4 border-primary h-[250px] w-[250px] flex justify-center items-center lg:h-[400px] lg:w-[400px]'>
+        <img src='/src/assets/yo.png'/>
+      </div>
+    </div>
   );
 };
 

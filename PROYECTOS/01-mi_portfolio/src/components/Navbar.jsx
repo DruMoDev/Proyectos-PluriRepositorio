@@ -3,24 +3,26 @@ import React, { useState } from "react";
 import menu from "/src/assets/menu-icon.svg";
 import close from "/src/assets/close-icon.svg";
 
+
+
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
 
   return (
-    <nav className='max-w-[1200px] m-auto flex py-6 justify-between items-center bg-slate-500 shadow-md'>
+    <nav className='w-full flex sm:shadow-md static  sm:shadow-primary h-16 items-center'>
       {/* <img src={logo} alt='dru-logo' className='w-auto h-9 pl-20'></img> */}
       <ul className='list-none sm:flex hidden justify-center gap-16 items-center flex-1 '>
-        <li className='hover:text-primary-secondary font-poppins font-normal cursor-pointer bg-black text-xl text-primary-primary'>
-          <a href='#home'>Home</a>
+        <li className='hover:text-dru_white cursor-pointer text-xl text-primary p-2 transition1 hover:-translate-y-1'>
+          <a href="hero" className="underline1">About Me</a>
         </li>
-        <li className='hover:text-primary-secondary font-poppins font-normal cursor-pointer text-xl text-primary-primary '>
-          <a href='#features'>Features</a>
+        <li className='hover:text-dru_white cursor-pointer text-xl text-primary p-2 transition1 hover:-translate-y-1'>
+          <a href="#skills" className="underline1">Skills</a>
         </li>
-        <li className='hover:text-primary-secondary font-poppins font-normal cursor-pointer text-xl text-primary-primary '>
-          <a href='#product'>Product</a>
+        <li className='cursor-pointer text-lg text-dark bg-primary p-2 px-3 rounded-xl hover:bg-dark hover:text-primary border-2 border-dark hover:border-primary font-bold uppercase transition1'>
+          <a href='#projects' >Projects</a>
         </li>
-        <li className='hover:text-primary-secondary font-poppins font-normal cursor-pointer text-xl text-primary-primary '>
-          <a href='#clients'>Clients</a>
+        <li className='hover:text-dru_white  cursor-pointer text-xl text-primary p-2 transition1 hover:-translate-y-1'>
+          <a href='#contact' className="underline1">Contact</a>
         </li>
       </ul>
 
@@ -34,20 +36,20 @@ const Navbar = () => {
         <div
           className={`${
             toggle ? "flex" : "hidden"
-          } p-6 bg-black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] rounded-xl sidebar`}
+          }  absolute top-20 right-7 min-w-[140px] rounded-lg overflow-hidden sidebar border-2 border-primary bg-dark bg-opacity-95 w-[250px] justify-center`}
         >
-          <ul className='list-none flex justify-end flex-col items-center flex-1 bg-primary-dru_white p-0 m-0 rounded-2xl w-[300px]'>
-            <li className='hover:bg-[#1c1c1ce3] p-10 w-full text-center font-poppins font-normal cursor-pointer text-2xl text-primary-primary mb-4'>
-              <a href='#home'>Home</a>
+          <ul className="w-full h-full">
+            <li className='py-6 w-full text-center cursor-pointer text-2xl text-primary transition1'>
+              <a href='#home' className="underline1">About Me</a>
             </li>
-            <li className='hover:bg-[#1c1c1ce3] w-full text-center p-10 font-poppins font-normal cursor-pointer text-2xl text-primary-primary mb-4'>
-              <a href='#features'>Features</a>
+            <li className='w-full text-center py-6 cursor-pointer text-2xl text-primary transition1'>
+              <a href='#features' className="underline1">Skills</a>
             </li>
-            <li className='hover:bg-[#1c1c1ce3] w-full text-center p-10 font-poppins font-normal cursor-pointer text-2xl text-primary-primary mb-4'>
-              <a href='#product'>Product</a>
+            <li className='w-full text-center py-2 cursor-pointer text-2xl '>
+              <a href='#product' className="text-dark p-4 px-7 rounded-lg font-semibold bg-primary border-2 border-dark hover:border-primary hover:bg-dark hover:text-primary transition1">Projects</a>
             </li>
-            <li className='hover:bg-[#1c1c1ce3] w-full text-center p-10 font-poppins font-normal cursor-pointer text-2xl text-primary-primary mr-0'>
-              <a href='#clients'>Clients</a>
+            <li className='w-full text-center py-6 cursor-pointer text-2xl text-primary transition1 '>
+              <a href='#clients' className="underline1">Contact</a>
             </li>
           </ul>
         </div>
