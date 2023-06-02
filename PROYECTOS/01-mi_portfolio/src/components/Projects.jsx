@@ -38,7 +38,7 @@ function Projects() {
       <h2 className='text-dru_white text-3xl text-center'>
         Here are some of my projects.
       </h2>
-      <div className='grid grid-cols-1 sm:grid-cols-2 lg::grid-cols-3 gap-8'>
+      <div className='grid grid-cols-1 sm:grid-cols-2 lg::grid-cols-3 gap-8 mx-auto'>
         {projects.map(({ img, description, title }, index) => {
           return (
             <Project
