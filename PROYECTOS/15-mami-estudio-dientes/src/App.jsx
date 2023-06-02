@@ -31,7 +31,8 @@ function App() {
         {user ? (
           <MainPage user={user}/>
         ) : (<div className='h-screen flex flex-col justify-center items-center'>
-            <h1 className='text-xl m-4 font-semibold'>Inicia sesión para registrar tu progreso!</h1>
+            <h1 className='md:text-2xl text-lg m-4 font-semibold'>¡Bienvenido al estudio de Nuria Casals!</h1>
+            <p>Inicia sesión para registrar tu progreso!</p>
             <SignIn/>
           </div>)}
       </section>

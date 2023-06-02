@@ -7,6 +7,7 @@ function MainPage({ user }) {
       <h1 className='text-xl m-4 font-semibold'>
         Bienvenido {user.displayName}!
       </h1>
+      <h3>Te has lavado los dientes?</h3>
       <div className="absolute top-16 right-0">
       <SignOut />
       </div>
