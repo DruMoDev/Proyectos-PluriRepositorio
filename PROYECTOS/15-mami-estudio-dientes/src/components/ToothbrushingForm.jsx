@@ -1,16 +1,15 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { collection, addDoc } from "firebase/firestore";
-import { useAuthState } from "react-firebase-hooks/auth";
 
-const ToothbrushingForm = ({ firestore, user }) => {
-  const [brushedTeeth, setBrushedTeeth] = useState(false);
+const ToothbrushingForm = ({ db, user }) => {
+  const [brushedTeeth, setBrushedTeeth] = useState("");
   const [breakfastTime, setBreakfastTime] = useState("");
   const [mealTime, setMealTime] = useState("");
   const [hungerLevel, setHungerLevel] = useState("");
-  const [formSubmitted, setFormSubmitted] = useState(false);  
+  const [formSubmitted, setFormSubmitted] = useState(false);
 
   const handleBrushedTeethChange = event => {
-    setBrushedTeeth(event.target.checked);
+    setBrushedTeeth(event.target.value);
   };
 
   const handleBreakfastTimeChange = event => {
@@ -28,8 +27,8 @@ const ToothbrushingForm = ({ firestore, user }) => {
   const handleSubmit = async event => {
     event.preventDefault();
 
-    try {
-      const docRef = await addDoc(collection(firestore, "brushingData"), {
+    try {      
+      const docRef = await addDoc(collection(db, user.displayName), {
         usuario: user.displayName,
         brushedTeeth,
         breakfastTime,
@@ -41,7 +40,7 @@ const ToothbrushingForm = ({ firestore, user }) => {
       console.log("Documento creado con ID:", docRef.id);
 
       setFormSubmitted(true);
-      setBrushedTeeth(false);
+      setBrushedTeeth("");
       setBreakfastTime("");
       setMealTime("");
       setHungerLevel("");
@@ -61,14 +60,30 @@ const ToothbrushingForm = ({ firestore, user }) => {
         </div>
       )}
 
-      <label className='flex flex-col items-center gap-3'>
-        <span>¿Te has lavado los dientes hoy?</span>
-        <input
-          className='h-5 w-5 rounded-md border-gray-300 focus:ring-indigo-500 focus:border-indigo-500'
-          type='checkbox'
-          checked={brushedTeeth}
-          onChange={handleBrushedTeethChange}
-        />
+      <label>
+        ¿Te has lavado los dientes hoy?
+        <div className="flex justify-center gap-10">
+          <label>
+            Sí
+            <input
+            className="ml-2"
+              type="radio"
+              value="Sí"
+              checked={brushedTeeth === "Sí"}
+              onChange={handleBrushedTeethChange}
+            />
+          </label>
+          <label>
+            No
+            <input
+            className="ml-2"
+              type="radio"
+              value="No"
+              checked={brushedTeeth === "No"}
+              onChange={handleBrushedTeethChange}
+            />
+          </label>
+        </div>
       </label>
 
       <label className='flex flex-col items-center gap-3'>

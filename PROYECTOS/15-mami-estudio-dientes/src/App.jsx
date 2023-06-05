@@ -1,6 +1,7 @@
 import { useAuthState } from "react-firebase-hooks/auth";
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
+import { getFirestore } from "firebase/firestore";
 import "firebase/compat/firestore"; // Importa firestore desde firebase/compat
 import SignIn from "./components/SignIn";
 import NavBar from "./components/NavBar";
@@ -15,36 +16,20 @@ const firebaseConfig = {
   appId: "1:930987286988:web:2e2de06bc6e3a9befe7d69",
 };
 
-firebase.initializeApp(firebaseConfig);
-
-const firestore = firebase.firestore(); // Accede a la instancia de Firestore
-
-const collectionUsersRef = firestore.collection('usuarios');
-
-collectionUsersRef.get()
-  .then((querySnapshot) => {
-    querySnapshot.forEach((doc) => {
-      // Acceder a los datos de cada documento
-      const data = doc.data();
-      // Hacer algo con los datos
-      console.log(data);
-    });
-  })
-  .catch((error) => {
-    console.log("Error al obtener los documentos: ", error);
-  });
+const app = firebase.initializeApp(firebaseConfig);
+const db = getFirestore(app); // Accede a la instancia de Firestore
 
 function App() {
   const [user] = useAuthState(firebase.auth()); // Pasa firebase.auth() como argumento
 
   return (
-    <div className='w-screen'>
+    <div className='w-screen font-sans m-0'>
       <NavBar />
-      <section className='h-screen mt-36 md:mt-20 lg:mt-10'>
+      <section className=''>
         {user ? (
-          <MainPage user={user} firestore={firestore}/>
+          <MainPage user={user} db={db} />
         ) : (
-          <div className='h-screen flex flex-col justify-center items-center'>
+          <div className='mt-10 flex flex-col justify-center items-center'>
             <h1 className='md:text-2xl text-lg m-4 font-semibold'>
               ¡Bienvenido al estudio de Nuria Casals!
             </h1>
