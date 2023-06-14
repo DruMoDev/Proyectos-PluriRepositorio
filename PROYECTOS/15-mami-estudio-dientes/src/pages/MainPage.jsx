@@ -1,17 +1,19 @@
-import React from "react";
-import SignOut from "../components/SignOut";
+import { useState } from "react";
 import ToothbrushingForm from "../components/ToothbrushingForm";
 import ToothbrushingRegister from "../components/ToothbrushingRegister";
 
 function MainPage({ user, db }) {
+const [rerender, setRerender] = useState(false);
+
+const rerenderState = () => {
+  setRerender(!rerender)
+}
+
   return (
-    <div className='mt-36 md:mt-20 lg:mt-10 flex flex-col justify-center items-center mx-auto'>
-      <h1 className='text-xl font-semibold'>¡Bienvenido {user.displayName}!</h1>
-      <ToothbrushingForm db={db} user={user} />
-      <ToothbrushingRegister db={db} user={user}/>
-      <div className='absolute top-16 right-0'>
-        <SignOut />
-      </div>
+    <div className='mt-36 flex flex-col justify-center items-center mx-auto'>
+      <h1 className='text-xl font-semibold'>¡Bienvenido {user.displayName}!</h1>      
+      <ToothbrushingForm db={db} user={user} rerenderState={rerenderState}/>
+      <ToothbrushingRegister db={db} user={user} rerender={rerender}  rerenderState={rerenderState}/>      
     </div>
   );
 }

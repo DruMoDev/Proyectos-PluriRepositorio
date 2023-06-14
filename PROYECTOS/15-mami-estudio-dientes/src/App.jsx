@@ -23,13 +23,13 @@ function App() {
   const [user] = useAuthState(firebase.auth()); // Pasa firebase.auth() como argumento
 
   return (
-    <div className='w-screen font-sans m-0'>
+    <div className=' font-sans '>
       <NavBar />
       <section className=''>
         {user ? (
           <MainPage user={user} db={db} />
         ) : (
-          <div className='mt-10 flex flex-col justify-center items-center'>
+          <div className='mt-20 flex flex-col justify-center items-center'>
             <h1 className='md:text-2xl text-lg m-4 font-semibold'>
               ¡Bienvenido al estudio de Nuria Casals!
             </h1>

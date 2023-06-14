@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { collection, addDoc } from "firebase/firestore";
 
-const ToothbrushingForm = ({ db, user }) => {
+const ToothbrushingForm = ({ db, user, rerenderState }) => {
   const [brushedTeeth, setBrushedTeeth] = useState("");
   const [breakfastTime, setBreakfastTime] = useState("");
   const [mealTime, setMealTime] = useState("");
@@ -27,7 +27,7 @@ const ToothbrushingForm = ({ db, user }) => {
   const handleSubmit = async event => {
     event.preventDefault();
 
-    try {      
+    try {
       const docRef = await addDoc(collection(db, user.displayName), {
         usuario: user.displayName,
         brushedTeeth,
@@ -44,6 +44,7 @@ const ToothbrushingForm = ({ db, user }) => {
       setBreakfastTime("");
       setMealTime("");
       setHungerLevel("");
+      rerenderState()
     } catch (error) {
       console.error("Error al crear el documento:", error);
     }
@@ -54,21 +55,15 @@ const ToothbrushingForm = ({ db, user }) => {
       onSubmit={handleSubmit}
       className='flex flex-col w-10/12 max-w-[700px] my-7 border shadow-sm p-8 py-10 bg-gray-50 rounded-md text-center justify-center items-center gap-10 text-lg'
     >
-      {formSubmitted && (
-        <div className='text-green-600'>
-          ¡El formulario se ha enviado correctamente!
-        </div>
-      )}
-
       <label>
         ¿Te has lavado los dientes hoy?
-        <div className="flex justify-center gap-10">
+        <div className='flex justify-center gap-10'>
           <label>
             Sí
             <input
-            className="ml-2"
-              type="radio"
-              value="Sí"
+              className='ml-2'
+              type='radio'
+              value='Sí'
               checked={brushedTeeth === "Sí"}
               onChange={handleBrushedTeethChange}
             />
@@ -76,9 +71,9 @@ const ToothbrushingForm = ({ db, user }) => {
           <label>
             No
             <input
-            className="ml-2"
-              type="radio"
-              value="No"
+              className='ml-2'
+              type='radio'
+              value='No'
               checked={brushedTeeth === "No"}
               onChange={handleBrushedTeethChange}
             />
@@ -117,6 +112,12 @@ const ToothbrushingForm = ({ db, user }) => {
           onChange={handleHungerLevelChange}
         />
       </label>
+
+      {formSubmitted && (
+        <div className='text-green-600'>
+          ¡El formulario se ha enviado correctamente!
+        </div>
+      )}
 
       <button
         className='p-2 border rounded-lg mt-7 w-1/2 bg-white hover:bg-green-300 hover:-translate-y-1 transition-all ease-in'

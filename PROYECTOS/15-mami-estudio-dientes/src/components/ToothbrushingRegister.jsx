@@ -2,7 +2,7 @@
 import { collection, getDocs, doc, deleteDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
 
-const ToothbrushingRegister = ({ user, db }) => {
+const ToothbrushingRegister = ({ user, db, rerender, rerenderState }) => {
   const [userData, setUserData] = useState([]);
 
   useEffect(() => {
@@ -25,13 +25,14 @@ const ToothbrushingRegister = ({ user, db }) => {
 
     fetchData();
     console.log(userData);
-  }, []);
+  }, [rerender]);
 
 
   const handleDeleteDocument = async (documentId) => {
     try {
       const documentRef = doc(db, user.displayName, documentId); 
       await deleteDoc(documentRef);
+      rerenderState()
       console.log("Documento eliminado correctamente");
     } catch (error) {
       console.error("Error al eliminar el documento:", error);
