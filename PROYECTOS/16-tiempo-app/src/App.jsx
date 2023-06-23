@@ -1,26 +1,15 @@
-import Example from "./components/Example"
-import Example2 from "./components/Example2"
-
-
+import Footer from "./components/Footer";
+import NavbarComp from "./components/NavbarComp";
+import WeatherAPI from "./components/WeatherAPI";
 
 function App() {
-
   return (
-    <div className="mx-auto min-h-screen">
-      <Example/>
-      <h1>Hol a todoas cabrones</h1>
-      <Example2/>
-      <h1>Hol a todoas cabrones</h1>
-      <h1>Hol a todoas cabrones</h1>
-      <h1>Hol a todoas cabrones</h1>
-      <h1>Hol a todoas cabrones</h1>
-      <h1>Hol a todoas cabrones</h1>
-      <h1>Hol a todoas cabrones</h1>
-      <h1>Hol a todoas cabrones</h1>
-      <h1>Hol a todoas cabrones</h1>
-      <h1>Hol a todoas cabrones</h1>
+    <div className='mx-auto min-h-screen  '>
+      <NavbarComp />
+      <WeatherAPI />
+      <Footer />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

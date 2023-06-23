@@ -4,11 +4,9 @@ import {
   Typography,
   Button,
   IconButton,
-  Card,
-  Collapse,
 } from "@material-tailwind/react";
 
-export default function Example() {
+export default function NavbarComp() {
   const [openNav, setOpenNav] = useState(false);
 
   useEffect(() => {
@@ -19,26 +17,24 @@ export default function Example() {
   }, []);
 
   const navList = (
-    <ul className='mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6 '>
+    <ul className='mb-4 mt-2 flex flex-col justify-center items-center gap-2 lg:mb-0 lg:mt-0 lg:flex-row  lg:items-center lg:gap-6 '>
       <Typography
         as='li'
         variant='small'
         color='blue-gray'
         className='p-1 font-normal'
       >
-      
-        <a href='#' className='flex items-center'>
+        <a href='#' className='flex items-center text-white text-lg'>
           Pages
         </a>
       </Typography>
-      <p>Hola</p>
       <Typography
         as='li'
         variant='small'
         color='blue-gray'
         className='p-1 font-normal'
       >
-        <a href='#' className='flex items-center'>
+        <a href='#' className='flex items-center text-white text-lg'>
           Account
         </a>
       </Typography>
@@ -48,7 +44,7 @@ export default function Example() {
         color='blue-gray'
         className='p-1 font-normal'
       >
-        <a href='#' className='flex items-center'>
+        <a href='#' className='flex items-center text-white text-lg'>
           Blocks
         </a>
       </Typography>
@@ -58,7 +54,7 @@ export default function Example() {
         color='blue-gray'
         className='p-1 font-normal'
       >
-        <a href='#' className='flex items-center'>
+        <a href='#' className='flex items-center text-white text-lg'>
           Docs
         </a>
       </Typography>
@@ -66,21 +62,20 @@ export default function Example() {
   );
 
   return (
-    <Navbar className='sticky inset-0 z-10 h-max max-w-full rounded-none py-2 px-4 lg:px-8 lg:py-4'>
+    <Navbar className='bg-gradient-to-r from-wattle-500 to-wattle-800 sticky inset-0 z-10 h-max max-w-full rounded-none py-2 px-4 lg:px-8 lg:py-4'>
       <div className='flex items-center justify-between text-blue-gray-900'>
         <Typography
           as='a'
           href='#'
-          className='mr-4 cursor-pointer py-1.5 font-medium'
+          className='mr-4 cursor-pointer py-1.5 font-medium text-white'
         >
-          Material Tailwind
+          Tiempo App Dru
         </Typography>
         <div className='flex items-center gap-4'>
           <div className='mr-4 hidden lg:block'>{navList}</div>
           <Button
-            variant='gradient'
             size='sm'
-            className='hidden lg:inline-block'
+            className='hidden lg:inline-block bg-wattle-500 text-black shadow-wattle-700'
           >
             <span>Buy Now</span>
           </Button>
@@ -94,7 +89,7 @@ export default function Example() {
               <svg
                 xmlns='http://www.w3.org/2000/svg'
                 fill='none'
-                className='h-6 w-6'
+                className='h-6 w-6 text-white'
                 viewBox='0 0 24 24'
                 stroke='currentColor'
                 strokeWidth={2}
@@ -108,7 +103,7 @@ export default function Example() {
             ) : (
               <svg
                 xmlns='http://www.w3.org/2000/svg'
-                className='h-6 w-6'
+                className='h-6 w-6 text-white'
                 fill='none'
                 stroke='currentColor'
                 strokeWidth={2}
@@ -123,13 +118,16 @@ export default function Example() {
           </IconButton>
         </div>
       </div>
-      <Collapse open={openNav}>
+      <div className={openNav ? "block" : "hidden"}>
         {navList}
-        <Button variant='gradient' size='sm' fullWidth className='mb-2'>
+        <Button
+          className='bg-gradient-to-tr from-wattle-50 to-wattle-200 mb-2 text-black shadow-wattle-700'
+          size='sm'
+          fullWidth
+        >
           <span>Buy Now</span>
         </Button>
-        <p className='border text-black bg-red-500'>Hola</p>
-      </Collapse>
+      </div>
     </Navbar>
   );
 }
