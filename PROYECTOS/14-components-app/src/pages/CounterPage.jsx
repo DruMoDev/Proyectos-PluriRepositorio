@@ -3,33 +3,25 @@ import Button from "../components/Button";
 import { useNumber } from "../hooks/useNumber";
 import Panel from "../components/Panel";
 import { count } from "mathjs";
+import { produce } from "immer";
 
 const reducer = (state, action) => {
   switch (action.type) {
     case INCREMENT_COUNT:
-      return {
-        ...state,
-        count: state.count + 1,
-      };
-
-    case SET_VALUE_TO_ADD:
-      return {
-        ...state,
-        valueToAd: action.payload,
-      };
+      state.count = state.count + 1;
+      return;
     case DECREMENT_COUNT:
-      return {
-        ...state,
-        count: state.count - 1,
-      };
+      state.count = state.count - 1;
+      return;
+    case SET_VALUE_TO_ADD:
+      state.valueToAd = action.payload;
+      return;
     case INCREASE_COUNT_VALUE_TO_ADD:
-      return {
-        ...state,
-        count: state.count + state.valueToAd,
-        valueToAd: 0,
-      };
+      state.count = state.count + state.valueToAd;
+      state.valueToAd = 0;
+      return;
     default:
-      return state;
+      return;
   }
 };
 
@@ -42,7 +34,7 @@ const CounterPage = ({ initialCount }) => {
   // const [count, setCount] = useState(initialCount);
   // const [valueToAd, setValueToAd] = useState();
 
-  const [state, dispatch] = useReducer(reducer, {
+  const [state, dispatch] = useReducer(produce(reducer), {
     count: initialCount,
     valueToAd: 0,
   });

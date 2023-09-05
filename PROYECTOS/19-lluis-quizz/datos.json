@@ -1,0 +1,18 @@
+{
+    "quizz": {
+      "participants": [],
+      "questions": [
+        {
+          "question": "Cuantos años tiene Dru",
+          "options": ["22", "23", "24", "25"],
+          "correctOptionIndex": 3
+        }
+      ],
+      "currentQuestionIndex": 0,
+      "teams": [
+        { "name": "Team 1", "points": 0 },
+        { "name": "Team 2", "points": 0 }
+      ]
+    }
+  }
+  
