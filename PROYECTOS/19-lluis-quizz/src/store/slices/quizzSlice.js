@@ -1,22 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-
-[
-  {
-    name: "Tragabolas",
-    points: 0,
-    id: 0,
-  },
-  {
-    name: "Maricones",
-    points: 0,
-    id: 1,
-  },
-  {
-    name: "DruTeam",
-    points: 0,
-    id: 2,
-  },
-];
+import { collection, getDocs } from "firebase/firestore";
+import { useFirebase } from "../../main";
 
 const quizzSlice = createSlice({
   name: "quizz",
@@ -39,17 +23,19 @@ const quizzSlice = createSlice({
       },
     ],
     currentQuestionIndex: 0,
-    teams: localStorage.getItem("teams")
-      ? JSON.parse(localStorage.getItem("teams"))
-      : [],
-    yourCurrentTeam: localStorage.getItem("yourCurrentTeam")
-      ? JSON.parse(localStorage.getItem("yourCurrentTeam"))
-      : undefined,
+    teams: [],
+    // teams: localStorage.getItem("teams")
+    //   ? JSON.parse(localStorage.getItem("teams"))
+    //   : []
+    yourCurrentTeam: undefined,
+    // yourCurrentTeam: localStorage.getItem("yourCurrentTeam")
+    //   ? JSON.parse(localStorage.getItem("yourCurrentTeam"))
+    //   : undefined
   },
   reducers: {
     addTeam: (state, action) => {
       state.teams.push(action.payload);
-      localStorage.setItem("teams", JSON.stringify(state.teams));
+      // localStorage.setItem("teams", JSON.stringify(state.teams));
     },
     setYourCurrentTeam: (state, action) => {
       state.yourCurrentTeam = action.payload;
@@ -62,7 +48,7 @@ const quizzSlice = createSlice({
       state.currentQuestionIndex += 1;
     },
 
-    updateTeamPoints: (state) => {
+    updateTeamPoints: state => {
       const idToUpdate = parseInt(localStorage.getItem("yourCurrentTeam"));
       const objetoRecuperado = JSON.parse(localStorage.getItem("teams"));
 
@@ -101,3 +87,27 @@ export const {
 } = quizzSlice.actions;
 
 export const quizzReducer = quizzSlice.reducer;
+
+// Función para cargar los datos iniciales desde Firestore
+export const loadInitialStateFromFirestore = () => {
+  return async dispatch => {
+    const { db } = useFirebase();
+
+    try {
+      const teamsCollection = collection(db, "equipos");
+      const querySnapshot = await getDocs(teamsCollection);
+
+      const teamsData = [];
+      querySnapshot.forEach(doc => {
+        teamsData.push({ ...doc.data(), id: doc.id });
+      });
+
+      // Despachar una acción para establecer los datos en el estado inicial
+      dispatch(
+        quizzSlice.actions.setInitialStateFromFirestore({ teams: teamsData })
+      );
+    } catch (error) {
+      console.error("Error al cargar datos iniciales desde Firestore:", error);
+    }
+  };
+};

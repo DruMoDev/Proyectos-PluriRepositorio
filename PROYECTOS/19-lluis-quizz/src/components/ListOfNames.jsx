@@ -1,12 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BsFillPersonFill } from "react-icons/bs";
 import { TiDeleteOutline } from "react-icons/ti";
 import { useDispatch, useSelector } from "react-redux";
 import { addTeam, deleteTeam } from "../store/slices/quizzSlice";
+import { deleteDoc, doc, setDoc } from "firebase/firestore";
+import { useFirebase } from "../main";
 
 const ListOfNames = () => {
   const { teams } = useSelector(state => state.quizz);
   const dispatch = useDispatch();
+
+  const { db } = useFirebase();
 
   const [nombreActual, setNombreActual] = useState("");
 
@@ -14,15 +18,39 @@ const ListOfNames = () => {
     setNombreActual(event.target.value);
   };
 
-  const handleSubmit = event => {
+  const handleSubmit = async event => {
     event.preventDefault();
+    const teamData = { name: nombreActual, points: 0, id: teams.length };
+    // Se crea una colección "equipos" y se añade un documento con los datos del equipo
+    await setDoc(doc(db, "equipos", nombreActual), teamData);
+    // Se envía al estado global los datos
     dispatch(addTeam({ name: nombreActual, points: 0, id: teams.length }));
+
     setNombreActual("");
   };
 
-  const handleEliminarNombre = index => {
+  const handleEliminarNombre = async index => {
+    await deleteDoc(doc(db, "equipos"));
     dispatch(deleteTeam(index));
   };
+
+  // useEffect(() => {
+  //   const getCollectionData = async () => {
+  //     try {
+  //       const collectionRef = collection(db, "nombre_de_la_coleccion");
+  //       const querySnapshot = await getDocs(collectionRef);
+
+  //       querySnapshot.forEach((doc) => {
+  //         console.log(doc.id, " => ", doc.data());
+  //         // Puedes hacer algo con los datos aquí
+  //       });
+  //     } catch (error) {
+  //       console.error("Error al obtener datos de Firestore:", error);
+  //     }
+  //   };
+
+  //   getCollectionData();
+  // }, [db]);
 
   return (
     <div className='w-10/12  py-8 px-5 bg-gray-200 opacity-95 shadow-sm rounded-lg mx-10 text-black flex flex-col justify-center items-center'>
