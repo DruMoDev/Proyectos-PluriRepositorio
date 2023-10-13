@@ -4,9 +4,13 @@ import Banner from "../../public/img/banner-camaras.jpg";
 
 export async function getData() {
   const respuesta = await fetch(
-    `${process.env.API_URL}/camaras?populate=imagen`,
-    { cache: "no-store" }
+    `${process.env.API_URL}/camaras?populate=imagen`
   );
+
+  if (!respuesta.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error("Failed to fetch data");
+  }
 
   return respuesta.json();
 }
@@ -22,7 +26,7 @@ const Tienda = async () => {
           className=""
           src={Banner}
           alt="Banner de cámaras"
-          fill={true}
+          fill
           objectFit="cover"
         />
         <div className="absolute inset-0 bg-black opacity-50 h-full w-full justify-center items-center flex">
@@ -36,7 +40,8 @@ const Tienda = async () => {
               <Image
                 className="rounded-md"
                 src={camara.attributes.imagen.data.attributes.formats.large.url}
-                fill={true}
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 object-fit="contain"
                 alt="imagen de una camara"
               />
