@@ -4,8 +4,8 @@ import Banner from "../../public/img/banner-camaras.jpg";
 
 export async function getData() {
   const respuesta = await fetch(
-    "http://127.0.0.1:1337/api/camaras?populate=imagen",
-    { next: { revalidate: 10000 } }
+    `${process.env.API_URL}/camaras?populate=imagen`,
+    { cache: "no-store" }
   );
 
   return respuesta.json();
@@ -19,7 +19,7 @@ const Tienda = async () => {
     <main>
       <div className="h-[150px] relative">
         <Image
-        className=""
+          className=""
           src={Banner}
           alt="Banner de cámaras"
           fill={true}
