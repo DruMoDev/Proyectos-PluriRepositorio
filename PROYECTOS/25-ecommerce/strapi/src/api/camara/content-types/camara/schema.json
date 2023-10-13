@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "camaras",
+  "info": {
+    "singularName": "camara",
+    "pluralName": "camaras",
+    "displayName": "camaras",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nombre": {
+      "type": "string"
+    },
+    "descripcion": {
+      "type": "richtext"
+    },
+    "imagen": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "url": {
+      "type": "uid",
+      "targetField": "nombre"
+    },
+    "precio": {
+      "type": "decimal"
+    }
+  }
+}
