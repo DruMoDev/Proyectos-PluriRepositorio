@@ -362,99 +362,6 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiCursoCurso extends Schema.SingleType {
-  collectionName: 'cursos';
-  info: {
-    singularName: 'curso';
-    pluralName: 'cursos';
-    displayName: 'Cursos';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    titulo: Attribute.String & Attribute.Required;
-    contenido: Attribute.RichText;
-    imagen: Attribute.Media;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::curso.curso',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::curso.curso',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiGuitarraGuitarra extends Schema.CollectionType {
-  collectionName: 'guitarras';
-  info: {
-    singularName: 'guitarra';
-    pluralName: 'guitarras';
-    displayName: 'Guitarras';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    nombre: Attribute.String & Attribute.Required;
-    descripcion: Attribute.RichText;
-    precio: Attribute.Integer;
-    imagen: Attribute.Media & Attribute.Required;
-    url: Attribute.UID<'api::guitarra.guitarra', 'nombre'>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::guitarra.guitarra',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::guitarra.guitarra',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiPostPost extends Schema.CollectionType {
-  collectionName: 'posts';
-  info: {
-    singularName: 'post';
-    pluralName: 'posts';
-    displayName: 'Post';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    titulo: Attribute.String & Attribute.Required;
-    contenido: Attribute.RichText;
-    imagen: Attribute.Media;
-    url: Attribute.UID<'api::post.post', 'titulo'>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::post.post', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::post.post', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-  };
-}
-
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -770,6 +677,99 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiCursoCurso extends Schema.SingleType {
+  collectionName: 'cursos';
+  info: {
+    singularName: 'curso';
+    pluralName: 'cursos';
+    displayName: 'Cursos';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    titulo: Attribute.String & Attribute.Required;
+    contenido: Attribute.RichText;
+    imagen: Attribute.Media;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::curso.curso',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::curso.curso',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiGuitarraGuitarra extends Schema.CollectionType {
+  collectionName: 'guitarras';
+  info: {
+    singularName: 'guitarra';
+    pluralName: 'guitarras';
+    displayName: 'Guitarras';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    nombre: Attribute.String & Attribute.Required;
+    descripcion: Attribute.RichText;
+    precio: Attribute.Integer;
+    imagen: Attribute.Media & Attribute.Required;
+    url: Attribute.UID<'api::guitarra.guitarra', 'nombre'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::guitarra.guitarra',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::guitarra.guitarra',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiPostPost extends Schema.CollectionType {
+  collectionName: 'posts';
+  info: {
+    singularName: 'post';
+    pluralName: 'posts';
+    displayName: 'Post';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    titulo: Attribute.String & Attribute.Required;
+    contenido: Attribute.RichText;
+    imagen: Attribute.Media;
+    url: Attribute.UID<'api::post.post', 'titulo'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::post.post', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::post.post', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -780,15 +780,15 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::curso.curso': ApiCursoCurso;
-      'api::guitarra.guitarra': ApiGuitarraGuitarra;
-      'api::post.post': ApiPostPost;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::i18n.locale': PluginI18NLocale;
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::curso.curso': ApiCursoCurso;
+      'api::guitarra.guitarra': ApiGuitarraGuitarra;
+      'api::post.post': ApiPostPost;
     }
   }
 }
