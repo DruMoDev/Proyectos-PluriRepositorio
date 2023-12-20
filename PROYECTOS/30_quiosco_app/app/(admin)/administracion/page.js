@@ -1,12 +1,27 @@
 "use client"
 import Orden from "@/app/components/Orden";
-import axios from "axios";
 import useSWR from "swr";
 
 
 const Home = () => {
 
-  const fetcher = () => axios("/api/ordenes").then((datos) => datos.data);
+  // const fetcher = () => axios("/api/ordenes").then((datos) => datos.data);
+
+  const fetcher = () => {
+    return fetch("/api/ordenes")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Error: ${response.status} - ${response.statusText}`);
+        }
+        return response.json();
+      })
+      .then((data) => data)
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+        // Puedes manejar el error según tus necesidades
+        throw error;
+      });
+  };
 
   const { data, error, isLoading } = useSWR("/api/ordenes", fetcher, {refreshInterval: 100});
 

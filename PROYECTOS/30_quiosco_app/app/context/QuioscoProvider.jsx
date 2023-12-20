@@ -85,32 +85,69 @@ const QuioscoProvider = ({ children }) => {
     setPedido(pedidoActualizado);
   };
 
+  // const colocarOrden = async (e) => {
+  //   e.preventDefault();
+
+  //   try {
+  //     const { data } = await axios.post("/api/ordenes", {
+  //       pedido,
+  //       nombre,
+  //       total,
+  //       fecha: Date.now().toString(),
+  //     });
+
+  //     // Resetear la app
+  //     setCategoriaActual(categorias[0]);
+  //     setPedido([]);
+  //     setNombre("");
+  //     setTotal(0);
+
+  //     toast.success("Pedido Realizado Correctamente");
+  //     setTimeout(() => {
+  //       router.push("/");
+  //     }, 3000);
+      
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
   const colocarOrden = async (e) => {
     e.preventDefault();
-
+  
     try {
-      const { data } = await axios.post("/api/ordenes", {
-        pedido,
-        nombre,
-        total,
-        fecha: Date.now().toString(),
+      const response = await fetch("/api/ordenes", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          pedido,
+          nombre,
+          total,
+          fecha: Date.now().toString(),
+        }),
       });
-
+  
+      if (!response.ok) {
+        throw new Error(`Error: ${response.status} - ${response.statusText}`);
+      }
+  
       // Resetear la app
       setCategoriaActual(categorias[0]);
       setPedido([]);
       setNombre("");
       setTotal(0);
-
+  
       toast.success("Pedido Realizado Correctamente");
       setTimeout(() => {
         router.push("/");
       }, 3000);
-      
     } catch (error) {
       console.log(error);
     }
   };
+  
 
   return (
     <QuioscoContext.Provider
