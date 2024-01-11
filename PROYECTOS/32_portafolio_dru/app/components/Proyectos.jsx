@@ -38,9 +38,9 @@ const PROYECTOS = [
 
 const Proyectos = () => {
   return (
-    <div id="proyectos" className="min-h-screen flex flex-col items-center w-full">
-      <div className="container my-20 rounded-2xl p-10 lg:border w-5/6">
-        <h2 className="lg:my-10 lg:mb-16 mb-20 lg:text-4xl text-3xl text-center lg:text-left lg:ml-10">Proyectos</h2>
+    <div id="proyectos" className="min-h-screen flex flex-col items-center bg-[#0B0B0B]">
+      <div className="container mb-20 lg:my-20 rounded-2xl p-10 lg:border w-5/6 lg:bg-black ">
+        <h2 className="lg:my-10 mb-16 lg:text-4xl text-3xl text-center lg:text-left lg:ml-10 font-extrabold text-primary tracking-widest">Proyectos</h2>
         <section className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-10">
           {PROYECTOS.map((proyecto) => (
             <Proyecto key={proyecto.titulo} proyecto={proyecto} />

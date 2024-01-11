@@ -1,10 +1,41 @@
 "use client";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { ScrollElement } from "react-scroll";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
+  const [isDivVisible, setIsDivVisible] = useState("");
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Obtiene la información del rectángulo del div objetivo
+      const aboutmeDiv = document.getElementById("aboutme");
+      const proyectosDiv = document.getElementById("proyectos");
+      const contactoDiv = document.getElementById("contacto");
+
+      const aboutmeRect = aboutmeDiv.getBoundingClientRect();
+      const proyectosRect = proyectosDiv.getBoundingClientRect();
+      // const contactoRect = contactoDiv.getBoundingClientRect();
+
+      // Comprueba si el rectángulo está dentro de la ventana visible
+      if (aboutmeRect.top <= 0 && aboutmeRect.bottom > 300) {
+        setIsDivVisible("aboutme");
+      } else if (proyectosRect.top >= 0 && aboutmeRect.bottom < 300) {
+        setIsDivVisible("proyectos");
+      }
+    };
+
+    // Agrega el evento de scroll al montar el componente
+    window.addEventListener("scroll", handleScroll);
+
+    // Elimina el evento de scroll al desmontar el componente
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,24 +60,33 @@ const Navbar = () => {
       } transition-background-color duration-300 ease-in-out `}
     >
       <div className="">
-        <span className="hover:text-white cursor-pointer">Roger Morera</span>
+        <span className="hover:text-white cursor-pointer transition-all duration-300">
+          Roger Morera
+        </span>
       </div>
       <div className="  flex gap-5 lg:gap-20 xl:gap-32 ">
         <Link
           onClick={(e) => ScrollElement("aboutme", e)}
-          className="hover:text-white"
+          className={`hover:text-white transition-all duration-300 ${
+            isDivVisible === "aboutme" ? "text-primary" : "text-secondary"
+          } `}
           href={"#aboutme"}
         >
           About Me
         </Link>
         <Link
           onClick={(e) => ScrollElement("aboutme", e)}
-          className="hover:text-white"
+          className={`hover:text-white transition-all duration-300 ${
+            isDivVisible === "proyectos" ? "text-primary" : "text-secondary"
+          } `}
           href={"#proyectos"}
         >
           Proyectos
         </Link>
-        <Link className="hover:text-white" href={"/"}>
+        <Link
+          className="hover:text-white transition-all duration-300"
+          href={"/"}
+        >
           Contacto
         </Link>
       </div>
