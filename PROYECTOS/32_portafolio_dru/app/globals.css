@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: monospace;
+}
+
+.bg-custom {
+  background-image: url("/product-showcase-with-spotlight-black-studio-room-background-use-as-montage-product-display.jpg");
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.1
+  ); /* Ajusta el último valor (0.5) para cambiar la opacidad */
+  background-blend-mode: multiply;
+}
+
+/* CSS DEL CAROUSEL */
+.carousel-container {
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+
+  width: 100%;
+}
+
+.carousel-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+
+  border-radius: 20%;
+}
+
+.carousel-card > img {
+  height: 100%;
+  width: 100%;
+  border-radius: 10%;
+}
+
+.carousel-track {
+  display: flex;
+  position: absolute;
+  left: 0;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+  gap: 16px;
+  width: 200%;
+  height: 100%;
+  animation: slide 20s linear infinite;
+}
+
+@keyframes slide {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: -100%;
+  }
+}
