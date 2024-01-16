@@ -1,10 +1,10 @@
 const Contacto = () => {
   return (
-    <div id="contacto" class="container mx-auto min-h-screen flex flex-col justify-center items-center">
-      <h1 class="text-3xl lg:text-6xl font-bold text-white mb-10">Contactame</h1>
+    <div id="contacto" className="container mx-auto min-h-screen flex flex-col justify-center items-center">
+      <h1 className="text-3xl lg:text-6xl font-bold text-white mb-10">Contactame</h1>
 
-      <form class="flex flex-col w-3/4 md:w-2/3 bg-quaternary p-8 border border-white rounded">
-        <label for="nombre" class="text-white">
+      <form className="flex flex-col w-3/4 md:w-2/3 bg-quaternary p-8 border border-white rounded">
+        <label htmlFor="nombre" className="text-white">
           Nombre
         </label>
         <input
@@ -12,10 +12,10 @@ const Contacto = () => {
           id="nombre"
           name="nombre"
           required
-          class="bg-gray-800 text-white py-2 px-3 rounded mt-1 mb-4 focus:outline-none focus:ring focus:border-blue-300"
+          className="bg-gray-800 text-white py-2 px-3 rounded mt-1 mb-4 focus:outline-none focus:ring focus:border-blue-300"
         />
 
-        <label for="apellido" class="text-white">
+        <label htmlFor="apellido" className="text-white">
           Apellidos
         </label>
         <input
@@ -23,10 +23,10 @@ const Contacto = () => {
           id="apellido"
           name="apellido"
           required
-          class="bg-gray-800 text-white py-2 px-3 rounded mt-1 mb-4 focus:outline-none focus:ring focus:border-blue-300"
+          className="bg-gray-800 text-white py-2 px-3 rounded mt-1 mb-4 focus:outline-none focus:ring focus:border-blue-300"
         />
 
-        <label for="email" class="text-white">
+        <label htmlFor="email" className="text-white">
           Email
         </label>
         <input
@@ -34,10 +34,10 @@ const Contacto = () => {
           id="email"
           name="email"
           required
-          class="bg-gray-800 text-white py-2 px-3 rounded mt-1 mb-4 focus:outline-none focus:ring focus:border-blue-300"
+          className="bg-gray-800 text-white py-2 px-3 rounded mt-1 mb-4 focus:outline-none focus:ring focus:border-blue-300"
         />
 
-        <label for="comentario" class="text-white">
+        <label htmlFor="comentario" className="text-white">
           Comentario
         </label>
         <textarea
@@ -45,12 +45,12 @@ const Contacto = () => {
           name="comentario"
           required
           rows="4"
-          class="bg-gray-800 text-white py-2 px-3 rounded mt-1 mb-4 focus:outline-none focus:ring focus:border-blue-300"
+          className="bg-gray-800 text-white py-2 px-3 rounded mt-1 mb-4 focus:outline-none focus:ring focus:border-blue-300"
         ></textarea>
 
         <button
           type="submit"
-          class="bg-blue-500 text-white py-2 px-4 rounded focus:outline-none focus:ring focus:border-blue-300"
+          className="bg-blue-500 text-white py-2 px-4 rounded focus:outline-none focus:ring focus:border-blue-300"
         >
           Enviar
         </button>
