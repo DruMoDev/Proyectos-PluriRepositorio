@@ -85,7 +85,7 @@ const Navbar = () => {
 
         <nav className="  flex gap-5 lg:gap-20  ">
           <Link
-            className={`hover:text-white transition-all duration-300 ${
+            className={`hover:text-primary transition-all duration-300 ${
               isDivVisible === "aboutme" ? "text-primary" : "text-secondary"
             } `}
             href={"#aboutme"}
@@ -93,7 +93,7 @@ const Navbar = () => {
             About Me
           </Link>
           <Link
-            className={`hover:text-white transition-all duration-300 ${
+            className={`hover:text-primary transition-all duration-300 ${
               isDivVisible === "proyectos" ? "text-primary" : "text-secondary"
             } `}
             href={"#proyectos"}
@@ -101,7 +101,7 @@ const Navbar = () => {
             Proyectos
           </Link>
           <Link
-            className={`hover:text-white transition-all duration-300 ${
+            className={`hover:text-primary transition-all duration-300 ${
               isDivVisible === "contacto" ? "text-primary" : "text-secondary"
             } `}
             href={"/#contacto"}

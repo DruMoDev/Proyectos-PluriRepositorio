@@ -15,12 +15,7 @@ const AboutMe = () => {
           con un <span className="text-primary">enfoque integral</span>, desde
           la concepción de ideas hasta su implementación y mejora continua.
         </p>
-        <div className="flex justify-center items-center gap-10">
-          <Badge>Hola</Badge>
-          <Badge>Hola</Badge>
-          <Badge>Hola</Badge>
-          <Badge>Hola</Badge>
-        </div>
+       
         <p className="w-5/6 lg:leading-10 leading-6 mx-auto lg:text-2xl mt-20 text-secondary text-center text-xs md:hidden">
           Estas son las <span className="text-primary">tecnologias</span> con
           las que he trabajado
