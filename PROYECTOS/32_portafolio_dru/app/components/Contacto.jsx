@@ -1,9 +1,9 @@
 const Contacto = () => {
   return (
-    <div id="contacto" class=" min-h-screen flex flex-col justify-center items-center">
+    <div id="contacto" class="container mx-auto min-h-screen flex flex-col justify-center items-center">
       <h1 class="text-3xl lg:text-6xl font-bold text-white mb-10">Contactame</h1>
 
-      <form class="flex flex-col w-3/4 md:w-2/3 lg:w-1/2 bg-quaternary p-8 border border-white rounded">
+      <form class="flex flex-col w-3/4 md:w-2/3 bg-quaternary p-8 border border-white rounded">
         <label for="nombre" class="text-white">
           Nombre
         </label>

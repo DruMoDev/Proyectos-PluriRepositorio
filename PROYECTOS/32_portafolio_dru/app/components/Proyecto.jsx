@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 const Proyecto = ({ proyecto }) => {
@@ -7,37 +8,43 @@ const Proyecto = ({ proyecto }) => {
   const router = useRouter();
 
   return (
-    <article
-      className="cursor-pointer border bg-[#0f0f0f] border-[#adadad] lg:p-7 p-4 rounded-2xl w-full hover:-translate-y-2 transition-transform duration-200 transform hover:scale-105"
-      onClick={() => router.push(`/proyectos/${id}`)}
-    >
+    <article className="relative border bg-quaternary border-secondary lg:p-7 p-4 rounded-2xl w-full hover:-translate-y-1 transition-transform duration-200 transform hover:scale-[1.025]">
       <Image
-        className="mx-auto rounded-lg w-[390px]"
-        height={200}
+        className="mx-auto rounded-lg w-full"
+        height={100}
         width={500}
         src={img}
         alt={`Imagen del proyecto ${titulo}`}
       />
-      <h3 className="lg:my-4 my-2 lg:text-3xl text-xl lg:text-left text-center font-bold">
+      <h3 className="lg:my-4 my-2 mt-7 lg:text-3xl text-xl lg:text-left  font-bold tracking-wide overflow-hidden line-clamp-1">
         {titulo}
       </h3>
-      <p className="text-[#adadad] ">{descripcion}</p>
-      <div></div>
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href={url}
-        className="float-end"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="currentColor"
-          className="h-6"
+      <p className="text-[#adadad] mb-10 lg:mb-6 overflow-hidden line-clamp-3">
+        {descripcion}
+      </p>
+      <div className="flex flex-row  gap-4 lg:gap-6 absolute bottom-5 right-5">
+        <Link
+          className="hover:text-primary cursor-pointer transition-all duration-300"
+          href={`/proyectos/${id}`}
         >
-          <path d="M10 6V8H5V19H16V14H18V20C18 20.5523 17.5523 21 17 21H4C3.44772 21 3 20.5523 3 20V7C3 6.44772 3.44772 6 4 6H10ZM21 3V11H19L18.9999 6.413L11.2071 14.2071L9.79289 12.7929L17.5849 5H13V3H21Z"></path>
-        </svg>
-      </a>
+          Ver Más
+        </Link>
+        <Link
+          target="_blank"
+          rel="noopener noreferrer"
+          href={url}
+          className="float-end hover:text-primary transition-all duration-300"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            className="h-6"
+          >
+            <path d="M10 6V8H5V19H16V14H18V20C18 20.5523 17.5523 21 17 21H4C3.44772 21 3 20.5523 3 20V7C3 6.44772 3.44772 6 4 6H10ZM21 3V11H19L18.9999 6.413L11.2071 14.2071L9.79289 12.7929L17.5849 5H13V3H21Z"></path>
+          </svg>
+        </Link>
+      </div>
     </article>
   );
 };

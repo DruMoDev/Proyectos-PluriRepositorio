@@ -16,17 +16,12 @@ module.exports = {
         primary: "#5c37e5",
         secondary: "#adadad",
         tertiary: "#0B0B0B",
-        quaternary: "#0f0f0f"
+        quaternary: "#0f0f0f",
+        quinary: "#15151D" //Color del Navbar
       },
       container: {
-        screens: {
-          "sm": "640px",
-          "md": "768px",
-          "lg": "1024px",
-          "xl": "1280px",
-          "2xl": "1920px",
-        },
-        padding: "3rem"
+       
+        padding: "2rem"
       },
     },
   },

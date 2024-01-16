@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Link as ScrollLink1 } from "react-scroll";
 
@@ -9,6 +9,9 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
   const [isDivVisible, setIsDivVisible] = useState("aboutme");
+  const router = useRouter();
+
+  const pathnameNumero = parseInt(pathname.split("/")[2], 10);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,11 +26,11 @@ const Navbar = () => {
 
       // Comprueba si el rectángulo está dentro de la ventana visible
 
-      if (aboutmeRect.top <= 0 && aboutmeRect.bottom > 300) {
+      if (aboutmeRect.bottom > 100) {
         setIsDivVisible("aboutme");
-      } else if (proyectosRect.top >= 0 && aboutmeRect.bottom < 300) {
+      } else if (aboutmeRect.bottom <= 100 && proyectosRect.bottom > 300) {
         setIsDivVisible("proyectos");
-      } else if (contactoRect.top >= 0 && proyectosRect.bottom < 300) {
+      } else if (proyectosRect.bottom <= 300 && contactoRect.bottom > 100) {
         setIsDivVisible("contacto");
       }
     };
@@ -50,7 +53,7 @@ const Navbar = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [pathname]);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -70,40 +73,46 @@ const Navbar = () => {
     <header
       className={`w-full fixed z-50 ${
         scrolled
-          ? "bg-[#15151D] border-black border"
+          ? "bg-quinary border-black border"
           : "bg-transparent border border-transparent "
       } transition-background-color duration-300 ease-in-out `}
     >
       <div className="container mx-auto flex items-center justify-between py-5 text-secondary text-xs md:text-lg ">
         <Image
+          onClick={() => router.push("/")}
           src={"/yo.png"}
           height={50}
           width={50}
           alt="logo"
-          className="rounded-full h-[20px] w-[20px] md:h-[30px] md:w-[30px]"
+          className="cursor-pointer rounded-full h-[20px] w-[20px] md:h-[30px] md:w-[30px]"
         />
 
         <nav className="  flex gap-5 lg:gap-20  ">
           <Link
             className={`hover:text-primary transition-all duration-300 ${
               isDivVisible === "aboutme" ? "text-primary" : "text-secondary"
-            } `}
-            href={"#aboutme"}
+            } ${pathname !== `/` ? "text-secondary" : "text-primary"} `}
+            href={"/#aboutme"}
           >
             About Me
           </Link>
           <Link
             className={`hover:text-primary transition-all duration-300 ${
-              isDivVisible === "proyectos" ? "text-primary" : "text-secondary"
+              isDivVisible === "proyectos"
+                ? "text-primary"
+                : "text-secondary" &&
+                  pathname === `/proyectos/${pathnameNumero}`
+                ? "text-primary"
+                : "text-secondary"
             } `}
-            href={"#proyectos"}
+            href={"/#proyectos"}
           >
             Proyectos
           </Link>
           <Link
             className={`hover:text-primary transition-all duration-300 ${
               isDivVisible === "contacto" ? "text-primary" : "text-secondary"
-            } `}
+            } ${pathname !== `/` ? "text-secondary" : "text-primary"}`}
             href={"/#contacto"}
           >
             Contacto
