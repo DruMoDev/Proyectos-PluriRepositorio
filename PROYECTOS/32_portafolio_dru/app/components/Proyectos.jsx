@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useContext } from "react";
 import Proyecto from "./Proyecto";
 import Link from "next/link";
@@ -50,9 +50,12 @@ import PortafolioContext from "../context/PortafolioProvider";
 // ];
 
 const Proyectos = () => {
-  const {proyectosState} = usePortafolio()
+  const { proyectosState } = usePortafolio();
   return (
-    <div id="proyectos" className="flex flex-col items-center  pb-20 pt-20 lg:pt-28">
+    <div
+      id="proyectos"
+      className="flex flex-col items-center  pb-20 pt-20 lg:pt-28"
+    >
       <div className="container">
         <h2 className=" mb-16 lg:mb-24 lg:text-6xl text-3xl text-center font-extrabold text-primary tracking-widest ">
           Proyectos

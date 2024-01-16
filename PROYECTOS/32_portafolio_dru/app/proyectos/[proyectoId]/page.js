@@ -1,5 +1,4 @@
 "use client";
-import Proyecto from "@/app/components/Proyecto";
 import usePortafolio from "@/app/hooks/usePortafolio";
 import Image from "next/image";
 import Link from "next/link";
