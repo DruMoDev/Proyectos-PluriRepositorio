@@ -1,13 +1,14 @@
 "use client";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { ScrollElement } from "react-scroll";
+import { Link as ScrollLink1 } from "react-scroll";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
-  const [isDivVisible, setIsDivVisible] = useState("");
+  const [isDivVisible, setIsDivVisible] = useState("aboutme");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,24 +19,38 @@ const Navbar = () => {
 
       const aboutmeRect = aboutmeDiv.getBoundingClientRect();
       const proyectosRect = proyectosDiv.getBoundingClientRect();
-      // const contactoRect = contactoDiv.getBoundingClientRect();
+      const contactoRect = contactoDiv.getBoundingClientRect();
 
       // Comprueba si el rectángulo está dentro de la ventana visible
+
       if (aboutmeRect.top <= 0 && aboutmeRect.bottom > 300) {
         setIsDivVisible("aboutme");
       } else if (proyectosRect.top >= 0 && aboutmeRect.bottom < 300) {
         setIsDivVisible("proyectos");
+      } else if (contactoRect.top >= 0 && proyectosRect.bottom < 300) {
+        setIsDivVisible("contacto");
       }
     };
-
+    if (pathname !== "/") {
+      window.removeEventListener("scroll", handleScroll);
+    }
     // Agrega el evento de scroll al montar el componente
     window.addEventListener("scroll", handleScroll);
+
+    if (pathname === "/") {
+      setIsDivVisible("aboutme");
+    }
+
+    if (pathname === "/proyectos") {
+      setIsDivVisible("");
+      setIsDivVisible("proyectos");
+    }
 
     // Elimina el evento de scroll al desmontar el componente
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [pathname]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -52,45 +67,50 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div
-      className={`w-full py-5 fixed flex justify-between px-6 z-50 text-[#adadad] sm:text-base sm:px-[100px] md:px-[120px] md:text-lg xl:px-[250px] ${
+    <header
+      className={`w-full fixed z-50 ${
         scrolled
-          ? "bg-[#0f0f0f] border-black border"
+          ? "bg-[#15151D] border-black border"
           : "bg-transparent border border-transparent "
       } transition-background-color duration-300 ease-in-out `}
     >
-      <div className="">
-        <span className="hover:text-white cursor-pointer transition-all duration-300">
-          Roger Morera
-        </span>
+      <div className="container mx-auto flex items-center justify-between py-5 text-secondary text-xs md:text-lg ">
+        <Image
+          src={"/yo.png"}
+          height={50}
+          width={50}
+          alt="logo"
+          className="rounded-full h-[20px] w-[20px] md:h-[30px] md:w-[30px]"
+        />
+
+        <nav className="  flex gap-5 lg:gap-20  ">
+          <Link
+            className={`hover:text-white transition-all duration-300 ${
+              isDivVisible === "aboutme" ? "text-primary" : "text-secondary"
+            } `}
+            href={"#aboutme"}
+          >
+            About Me
+          </Link>
+          <Link
+            className={`hover:text-white transition-all duration-300 ${
+              isDivVisible === "proyectos" ? "text-primary" : "text-secondary"
+            } `}
+            href={"#proyectos"}
+          >
+            Proyectos
+          </Link>
+          <Link
+            className={`hover:text-white transition-all duration-300 ${
+              isDivVisible === "contacto" ? "text-primary" : "text-secondary"
+            } `}
+            href={"/#contacto"}
+          >
+            Contacto
+          </Link>
+        </nav>
       </div>
-      <div className="  flex gap-5 lg:gap-20 xl:gap-32 ">
-        <Link
-          onClick={(e) => ScrollElement("aboutme", e)}
-          className={`hover:text-white transition-all duration-300 ${
-            isDivVisible === "aboutme" ? "text-primary" : "text-secondary"
-          } `}
-          href={"#aboutme"}
-        >
-          About Me
-        </Link>
-        <Link
-          onClick={(e) => ScrollElement("aboutme", e)}
-          className={`hover:text-white transition-all duration-300 ${
-            isDivVisible === "proyectos" ? "text-primary" : "text-secondary"
-          } `}
-          href={"#proyectos"}
-        >
-          Proyectos
-        </Link>
-        <Link
-          className="hover:text-white transition-all duration-300"
-          href={"/"}
-        >
-          Contacto
-        </Link>
-      </div>
-    </div>
+    </header>
   );
 };
 

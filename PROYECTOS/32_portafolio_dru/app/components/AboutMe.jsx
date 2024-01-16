@@ -1,11 +1,10 @@
+import usePortafolio from "../hooks/usePortafolio";
 import AutoplayCarousel from "./AutoplayCarousel";
+import Badge from "./Badge";
 
 const AboutMe = () => {
   return (
-    <div
-      id="aboutme"
-      className="bg-custom bg-cover bg-center flex flex-col pt-44 items-center min-h-screen"
-    >
+    <div id="aboutme" className="flex flex-col pt-44 items-center min-h-screen">
       <div className=" container mx-auto w-full">
         <h1 className="tracking-widest w-3/4 mx-auto text-center line lg:text-7xl text-4xl md:text-5xl">
           Desarrollador <span className="text-primary">Web</span> Full-Stack
@@ -16,6 +15,12 @@ const AboutMe = () => {
           con un <span className="text-primary">enfoque integral</span>, desde
           la concepción de ideas hasta su implementación y mejora continua.
         </p>
+        <div className="flex justify-center items-center gap-10">
+          <Badge>Hola</Badge>
+          <Badge>Hola</Badge>
+          <Badge>Hola</Badge>
+          <Badge>Hola</Badge>
+        </div>
         <p className="w-5/6 lg:leading-10 leading-6 mx-auto lg:text-2xl mt-20 text-secondary text-center text-xs md:hidden">
           Estas son las <span className="text-primary">tecnologias</span> con
           las que he trabajado

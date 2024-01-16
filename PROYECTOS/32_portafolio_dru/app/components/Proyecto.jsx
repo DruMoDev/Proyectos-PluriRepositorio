@@ -1,18 +1,15 @@
-"use client"
+"use client";
 import Image from "next/image";
-import React from "react";
+import { useRouter } from "next/navigation";
 
 const Proyecto = ({ proyecto }) => {
-  const { titulo, descripcion, img, url } = proyecto;
-
-  const handleRedirect = () => {
-    window.open(url, "_blank");
-  };
+  const { titulo, descripcion, img, url, id } = proyecto;
+  const router = useRouter();
 
   return (
     <article
       className="cursor-pointer border bg-[#0f0f0f] border-[#adadad] lg:p-7 p-4 rounded-2xl w-full hover:-translate-y-2 transition-transform duration-200 transform hover:scale-105"
-      onClick={handleRedirect}
+      onClick={() => router.push(`/proyectos/${id}`)}
     >
       <Image
         className="mx-auto rounded-lg w-[390px]"
@@ -21,7 +18,9 @@ const Proyecto = ({ proyecto }) => {
         src={img}
         alt={`Imagen del proyecto ${titulo}`}
       />
-      <h3 className="lg:my-4 my-2 lg:text-3xl text-xl lg:text-left text-center font-bold">{titulo}</h3>
+      <h3 className="lg:my-4 my-2 lg:text-3xl text-xl lg:text-left text-center font-bold">
+        {titulo}
+      </h3>
       <p className="text-[#adadad] ">{descripcion}</p>
       <div></div>
       <a
