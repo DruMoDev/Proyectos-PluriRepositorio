@@ -1,4 +1,5 @@
 "use client";
+import Badge from "@/app/components/Badge";
 import usePortafolio from "@/app/hooks/usePortafolio";
 import Image from "next/image";
 import Link from "next/link";
@@ -9,12 +10,12 @@ const Home = ({ params }) => {
   const proyectoObjetivo = proyectosState.filter(
     (proyecto) => proyecto.id.toString() === params.proyectoId
   );
-  const { titulo, descripcion, img, url, id } = proyectoObjetivo[0];
+  const { titulo, descripcion, img, url, id, tecnologias } = proyectoObjetivo[0];
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center md:pt-20">
+    <div className="min-h-screen flex flex-col items-center justify-center pt-20 ">
       <div className="container flex flex-col items-center lg:w-2/4 md:w-3/4 ">
-        <h1 className="mb-10 lg:mb-0 2xl:mb-3 text-center text-3xl 2xl:text-5xl">
+        <h1 className="mb-5 lg:mb-0 2xl:mb-3 text-center text-3xl 2xl:text-5xl">
           {titulo}
         </h1>
 
@@ -27,9 +28,11 @@ const Home = ({ params }) => {
             alt={`Imagen del proyecto ${titulo}`}
           />
 
-          <p className="text-[#adadad] px-2 lg:px-0 mb-5  mt-7">
+          <p className="text-[#adadad] px-2 lg:px-0 mb-5 mt-7 text-pretty">
             {descripcion}
           </p>
+
+          {tecnologias.map(tec => <Badge key={tec}>{tec}</Badge>)}
 
           <Link
             target="_blank"
