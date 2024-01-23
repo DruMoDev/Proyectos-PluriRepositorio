@@ -40,7 +40,12 @@ export default function RootLayout({ children }) {
           <Navbar />
           {children}
           <Footer />
-          <ToastContainer />
+          <ToastContainer
+            autoClose="2000"
+            closeOnClick
+            pauseOnHover={false}
+            pauseOnFocusLoss={false}
+          />
         </PortafolioProvider>
       </body>
     </html>

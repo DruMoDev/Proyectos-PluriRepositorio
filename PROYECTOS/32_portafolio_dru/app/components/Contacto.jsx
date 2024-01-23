@@ -32,9 +32,7 @@ const Contacto = () => {
     >
       <h1 className="text-3xl lg:text-6xl font-bold mb-10 bg-gradient-custom text-transparent bg-clip-text">
         Contactame
-      </h1>
-     
-
+      </h1>     
       <form
         className="flex flex-col w-3/4 md:w-2/3 bg-quaternary p-8 border border-white rounded"
         onSubmit={handleSubmit}
