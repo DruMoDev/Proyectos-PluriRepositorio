@@ -11,7 +11,7 @@ const pasos = [
 const Pasos = () => {
   const router = useRouter();
   const pathname = usePathname();
-  const { handleChangePaso } = useQuiosco();
+  const { handleChangePaso, pedido } = useQuiosco();
 
   const calcularProgreso = () => {
     let valor;
@@ -26,15 +26,25 @@ const Pasos = () => {
   };
 
   return (
-    <>
-      <div className="flex justify-between mb-5">
+    <div className="sticky top-0 bg-white mb-7 pt-5 border-b-2">
+      <div className="flex justify-between mb-5 ">
         {pasos.map((paso) => (
           <button
             onClick={() => {
               router.push(paso.url);
               handleChangePaso(paso.paso);
             }}
-            className="text-2xl font-bold"
+            className={`text-2xl font-bold ${
+              pedido.length !== 0 && paso.nombre === "Resumen" && pathname !== "/resumen" && pathname !== "/total"
+                ? "animate-bounce text-amber-500"
+                : ""
+            } ${
+              pedido.length !== 0 &&
+              paso.nombre === "Datos y Total" &&
+              pathname === "/resumen"
+                ? "animate-bounce text-amber-500"
+                : ""
+            }`}
             key={paso.paso}
           >
             {paso.nombre}
@@ -47,7 +57,7 @@ const Pasos = () => {
           style={{ width: `${calcularProgreso()}%` }}
         ></div>
       </div>
-    </>
+    </div>
   );
 };
 

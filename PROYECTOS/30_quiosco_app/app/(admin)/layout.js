@@ -1,7 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
 import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { QuioscoProvider } from "../context/QuioscoProvider";
 import { Inter } from "next/font/google";
 import "../globals.css";

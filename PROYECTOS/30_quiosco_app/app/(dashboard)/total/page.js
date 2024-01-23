@@ -37,7 +37,8 @@ const Home = () => {
         </div>
         <div className="mt-10">
           <p className="text-2xl">
-            Total a pagar: <span className="font-bold">{formatearDinero(total)}</span>
+            Total a pagar:{" "}
+            <span className="font-bold">{formatearDinero(total)}</span>
           </p>
         </div>
         <div className="mt-5">
@@ -45,10 +46,10 @@ const Home = () => {
             disabled={comprobarPedido()}
             type="submit"
             value="Confirmar Pedido"
-            className={`bg-indigo-600 w-full lg:w-auto px-5 py-2 rounded uppercase font-bold text-white text-center ${
+            className={`bg-indigo-600 w-full lg:w-auto px-5 py-2 rounded uppercase font-bold text-white text-center  ${
               comprobarPedido()
-                ? "bg-indigo-100"
-                : "bg-indigo-600 hover:bg-indigo-800"
+                ? "bg-indigo-300"
+                : "bg-indigo-600 hover:bg-indigo-800 cursor-pointer"
             }`}
           />
         </div>

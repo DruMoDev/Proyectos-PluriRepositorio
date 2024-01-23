@@ -23,15 +23,20 @@ export default function RootLayout({ children }) {
               <Sidebar />
             </aside>
 
-            <main className="w-8/12 xl:w-3/4 2xl:w-4/5 h-screen overflow-y-scroll">
-              <div className="p-10 mt-8">
+            <main className="w-8/12 xl:w-3/4 2xl:w-4/5 h-screen">
+              <div className="px-10">
                 <Pasos />
                 {children}
               </div>
             </main>
           </div>
 
-          <ToastContainer />
+          <ToastContainer
+            autoClose="2000"
+            closeOnClick
+            pauseOnHover={false}
+            pauseOnFocusLoss={false}
+          />
         </QuioscoProvider>
       </body>
     </html>

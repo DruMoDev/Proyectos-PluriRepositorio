@@ -10,23 +10,18 @@ const Categoria = ({ categoria }) => {
     <div
       className={`${
         categoriaActual?.id === id ? "bg-amber-400" : ""
-      } flex items-center gap-4 w-full border p-5 hover:bg-amber-400 `}
+      } flex items-center gap-4 w-full border p-5 hover:bg-amber-400 cursor-pointer`}
+      onClick={() => handleClickCategoria(id)}
     >
       <div className="hidden sm:block ">
         <Image
           alt="Imagen Icono"
-          height={100}
-          width={100}
+          height={90}
+          width={90}
           src={`/assets/img/icono_${icono}.svg`}
         />
       </div>
-      <button
-        className="md:text-2xl font-bold hover:cursor-pointer"
-        type="button"
-        onClick={() => handleClickCategoria(id)}
-      >
-        {nombre}
-      </button>
+      <h3 className="md:text-2xl font-bold hover:cursor-pointer">{nombre}</h3>
     </div>
   );
 };

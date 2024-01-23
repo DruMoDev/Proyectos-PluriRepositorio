@@ -9,21 +9,25 @@ const Sidebar = () => {
   const { categorias } = useQuiosco();
 
   return (
-    <>
+    <div className="fixed">
+    <div className="items-center justify-center flex">
+
       <Image
-        width={300}
-        height={100}
+        width={200}
+        height={200}
         src="/assets/img/logo.svg"
         alt="imagen logotipo"
         priority
+        
       />
+    </div>
 
-      <nav className="mt-10">
+      <nav className="mt-5">
         {categorias.map((categoria) => (
           <Categoria key={categoria.id} categoria={categoria} />
         ))}
       </nav>
-    </>
+    </div>
   );
 };
 
