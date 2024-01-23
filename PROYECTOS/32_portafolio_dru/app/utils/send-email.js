@@ -5,7 +5,6 @@ export function sendEmail(data) {
     method: "POST",
     body: JSON.stringify(data),
   })
-    .then((res) => res.json())
-    .then((response) => alert(response.message))
+    .then((res) => res.json())    
     .catch((err) => alert(err));
 }

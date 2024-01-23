@@ -4,6 +4,8 @@ import Navbar from "./components/Navbar";
 import { PortafolioProvider } from "./context/PortafolioProvider";
 import Head from "next/head";
 import Footer from "./components/Footer";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -38,6 +40,7 @@ export default function RootLayout({ children }) {
           <Navbar />
           {children}
           <Footer />
+          <ToastContainer />
         </PortafolioProvider>
       </body>
     </html>

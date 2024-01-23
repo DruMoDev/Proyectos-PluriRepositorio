@@ -1,7 +1,14 @@
 "use client";
-import { sendEmail } from "../utils/send-email";
+import { useState } from "react";
+import { sendEmail } from "../utils/send-email.js";
+import {  toast } from "react-toastify";
 
 const Contacto = () => {
+  const [nombreValor, setNombreValor] = useState("");
+  const [apellidoValor, setApellidoValor] = useState("");
+  const [emailValor, setEmailValor] = useState("");
+  const [comentarioValor, setComentarioValor] = useState("");
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -11,6 +18,11 @@ const Contacto = () => {
       formDataObject[key] = value;
     });
     sendEmail(formDataObject);
+    setNombreValor("");
+    setApellidoValor("");
+    setEmailValor("");
+    setComentarioValor("");
+    toast.success("Correo enviado correctamente!")
   };
 
   return (
@@ -21,6 +33,7 @@ const Contacto = () => {
       <h1 className="text-3xl lg:text-6xl font-bold mb-10 bg-gradient-custom text-transparent bg-clip-text">
         Contactame
       </h1>
+     
 
       <form
         className="flex flex-col w-3/4 md:w-2/3 bg-quaternary p-8 border border-white rounded"
@@ -34,6 +47,8 @@ const Contacto = () => {
           id="nombre"
           name="nombre"
           required
+          value={nombreValor}
+          onChange={(e) => setNombreValor(e.target.value)}
           className="bg-gray-800 text-white py-2 px-3 rounded mt-1 mb-4 focus:outline-none focus:ring focus:border-primary"
         />
 
@@ -45,6 +60,8 @@ const Contacto = () => {
           id="apellido"
           name="apellido"
           required
+          value={apellidoValor}
+          onChange={(e) => setApellidoValor(e.target.value)}
           className="bg-gray-800 text-white py-2 px-3 rounded mt-1 mb-4 focus:outline-none focus:ring focus:border-primary"
         />
 
@@ -56,6 +73,8 @@ const Contacto = () => {
           id="email"
           name="email"
           required
+          value={emailValor}
+          onChange={(e) => setEmailValor(e.target.value)}
           placeholder="ejemplo@ejemplo.com"
           className="bg-gray-800 text-white py-2 px-3 rounded mt-1 mb-4 focus:outline-none focus:ring focus:border-primary"
         />
@@ -68,6 +87,8 @@ const Contacto = () => {
           name="mensaje"
           required
           rows="4"
+          value={comentarioValor}
+          onChange={(e) => setComentarioValor(e.target.value)}
           placeholder="Me gustaría contactar contigo para..."
           className="bg-gray-800 text-white py-2 px-3 rounded mt-1 mb-4 focus:outline-none focus:ring focus:border-primary"
         ></textarea>
