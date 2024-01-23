@@ -1,6 +1,6 @@
 import usePortafolio from "../hooks/usePortafolio";
-import AutoplayCarousel from "./AutoplayCarousel";
 import Badge from "./Badge";
+import CarouselPrueba from "./CarouselPrueba";
 
 const AboutMe = () => {
   return (
@@ -23,8 +23,8 @@ const AboutMe = () => {
           Estas son las <span className="text-primary">tecnologias</span> con
           las que he trabajado
         </p>
-        <div className="h-[40px] lg:h-[70px] mx-auto lg:mx-52 md:mt-36 mt-2">
-          <AutoplayCarousel />
+        <div className=" mx-auto lg:mx-52 md:mt-36 mt-2">
+          <CarouselPrueba />
         </div>
       </div>
     </div>

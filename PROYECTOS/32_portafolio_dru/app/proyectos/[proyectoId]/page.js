@@ -1,12 +1,12 @@
 "use client";
-import Badge from "@/app/components/Badge";
-import usePortafolio from "@/app/hooks/usePortafolio";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import usePortafolio from "../../hooks/usePortafolio";
+import Badge from "../../components/Badge";
 
 const Home = ({ params }) => {
-  const { proyectosState } = usePortafolio();
+  const { proyectosState } = usePortafolio()
   const proyectoObjetivo = proyectosState.filter(
     (proyecto) => proyecto.id.toString() === params.proyectoId
   );

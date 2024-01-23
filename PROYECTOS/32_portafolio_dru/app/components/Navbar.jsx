@@ -117,6 +117,13 @@ const Navbar = () => {
           >
             Contacto
           </Link>
+          <a
+            download={"Roger_Morera_CV.pdf"}
+            href="/Roger_Morera_CV.pdf"
+            className="bg-primary rounded px-2 md:px-5 xl:px-10 text-black border border-black hover:bg-white hover:text-primary transition duration-300 hover:border-primary"
+          >
+            CV
+          </a>
         </nav>
       </div>
     </header>

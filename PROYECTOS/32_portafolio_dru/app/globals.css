@@ -4,14 +4,16 @@
 
 /* onest-latin-wght-normal */
 @font-face {
-  font-family: 'Onest Variable';
+  font-family: "Onest Variable";
   font-style: normal;
   font-display: swap;
   font-weight: 100 900;
-  src: url(https://cdn.jsdelivr.net/fontsource/fonts/onest:vf@latest/latin-wght-normal.woff2) format('woff2-variations');
-  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+  src: url(https://cdn.jsdelivr.net/fontsource/fonts/onest:vf@latest/latin-wght-normal.woff2)
+    format("woff2-variations");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
+    U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
-
 
 .bg-custom {
   background-image: url("/product-showcase-with-spotlight-black-studio-room-background-use-as-montage-product-display.jpg");
@@ -24,49 +26,16 @@
   background-blend-mode: multiply;
 }
 
-/* CSS DEL CAROUSEL */
-.carousel-container {
-  overflow: hidden;
-  position: relative;
-  height: 100%;
-
-  width: 100%;
-}
-
-.carousel-card {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-
-  border-radius: 20%;
-}
-
-.carousel-card > img {
-  height: 100%;
-  width: 100%;
-  border-radius: 10%;
-}
-
-.carousel-track {
-  display: flex;
-  position: absolute;
-  left: 0;
-  justify-content: center;
-  align-items: center;
-  height: 80px;
-  gap: 16px;
-  width: 200%;
-  height: 100%;
-  animation: slide 20s linear infinite;
-}
-
-@keyframes slide {
+/* Carousel de Prueba */
+@keyframes infiniteScroll {
   0% {
-    left: 0;
+    transform: translateX(0);
   }
   100% {
-    left: -100%;
+    transform: translateX(-100%);
   }
+}
+
+.infinite-scroll {
+  animation: infiniteScroll 25s linear infinite;
 }
