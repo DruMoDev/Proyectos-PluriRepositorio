@@ -33,7 +33,7 @@ const Proyecto = ({ proyecto }) => {
         </div>
         <div className="gap-4 lg:gap-6 flex flex-row place-self-start items-center ">
           <Link
-            className="hover:text-primary cursor-pointer transition-all duration-300 text-nowrap"
+            className="hover:text-primary cursor-pointer transition-all duration-300 text-nowrap px-0.5"
             href={`/proyectos/${id}`}
           >
             Ver Más

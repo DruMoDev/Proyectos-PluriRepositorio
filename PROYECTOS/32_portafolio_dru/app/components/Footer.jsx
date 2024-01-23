@@ -3,7 +3,7 @@ const Footer = () => {
     <footer className="bg-quinary shadow m-4 dark:bg-gray-800 text-white mx-auto absolute bottom-100 w-full ">
       <div className="w-full mx-auto max-w-screen-xl p-4 flex flex-col md:flex-row items-center justify-between container">
         <span className="text-sm  sm:text-center dark:text-gray-400">
-          © {new Date().getFullYear().toString()} Roger Morera . Todos los
+          © {new Date().getFullYear().toString()} Roger Morera | Todos los
           Derechos Reservados.
         </span>
         <ul className="flex flex-wrap items-center justify-center gap-3 mt-3 text-sm font-medium  dark:text-gray-400 sm:mt-0">
@@ -76,7 +76,11 @@ const Footer = () => {
             </a>
           </li>
           <li>
-            <a href="https://github.com/DruMoDev" className="hover:underline" target="_blank">
+            <a
+              href="https://github.com/DruMoDev"
+              className="hover:underline"
+              target="_blank"
+            >
               <svg
                 className="size-5 text-white"
                 aria-hidden="true"
@@ -92,7 +96,11 @@ const Footer = () => {
             </a>
           </li>
           <li>
-            <a href="https://www.linkedin.com/in/roger-morera/" className="hover:underline ">
+            <a
+              href="https://www.linkedin.com/in/roger-morera/"
+              className="hover:underline"
+              target="_blank"
+            >
               <svg
                 width="800px"
                 height="800px"
