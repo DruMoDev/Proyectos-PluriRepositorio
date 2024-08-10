@@ -1,7 +1,7 @@
-import { PrismaClient } from "@prisma/client";
+import { prisma } from "@/prisma/prismaClient";
 
 export const consultarDatos = async () => {
-  const prisma = new PrismaClient();
+  
 
   const categorias = await prisma.categoria.findMany();
 

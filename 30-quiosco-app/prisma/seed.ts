@@ -1,8 +1,7 @@
-import { PrismaClient } from "@prisma/client";
 import { categorias } from "./data/categorias";
 import { productos } from "./data/productos";
+import { prisma } from "./prismaClient";
 
-const prisma = new PrismaClient()
 
 const main = async () : Promise<void> => {
     try {

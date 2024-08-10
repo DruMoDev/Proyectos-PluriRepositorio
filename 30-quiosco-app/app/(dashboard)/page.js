@@ -17,8 +17,6 @@ const customStyles = {
 
 Modal.setAppElement("#__next");
 
-const info = "MySQL82"
-
 export default function Home() {
   const { categoriaActual, modal } = useQuiosco();
 

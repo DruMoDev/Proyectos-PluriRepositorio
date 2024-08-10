@@ -1,8 +1,7 @@
-import { PrismaClient } from "@prisma/client";
-import { NextRequest, NextResponse } from "next/server";
+import { prisma } from "@/prisma/prismaClient";
+import {  NextResponse } from "next/server";
 
 export async function GET() {
-  const prisma = new PrismaClient();
   const ordenes = await prisma.orden.findMany({
     where: {
       estado: false,
@@ -13,7 +12,6 @@ export async function GET() {
 }
 
 export async function POST(req, res) {
-  const prisma = new PrismaClient();
 
   const datos = await req.json();
 
