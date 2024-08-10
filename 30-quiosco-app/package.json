@@ -12,7 +12,7 @@
     "seed": "ts-node prisma/seed.ts"
   },
   "dependencies": {
-    "@prisma/client": "^5.7.0",
+    "@prisma/client": "^5.18.0",
     "axios": "^1.6.2",
     "next": "14.0.4",
     "react": "^18",
