@@ -7,16 +7,6 @@ import { toast } from "react-toastify";
 const Orden = ({ orden }) => {
   const { id, nombre, total, pedido } = orden;
 
-  // const completarOrden = async () => {
-  //   try {
-  //       await axios.post(`/api/completarOrden/${id}`)
-  //       toast.success("Orden Lista")
-  //   } catch (error) {
-  //       console.log(error)
-  //       toast.error("Hubo un error")
-  //   }
-  // }
-
   const completarOrden = async () => {
     try {
       const response = await fetch(`/api/completarOrden/${id}`, {
@@ -31,8 +21,7 @@ const Orden = ({ orden }) => {
   
       if (!response.ok) {
         throw new Error(`Error: ${response.status} - ${response.statusText}`);
-      }
-  
+      }  
       // Puedes realizar alguna acción adicional aquí si es necesario
   
       toast.success("Orden Lista");
